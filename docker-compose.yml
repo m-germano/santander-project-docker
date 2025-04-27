@@ -13,7 +13,7 @@ services:
       - DB_HOST=postgres
       - DB_PORT=5432
       - DB_USER=postgres
-      - DB_PASSWORD=marcal2012
+      - DB_PASSWORD=XXXXXXX
       - DB_NAME=meuBanco
     depends_on:
       - postgres
