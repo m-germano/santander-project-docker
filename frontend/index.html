@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Dados</title>
+</head>
+<body>
+    <h1>Cadastro de Dados</h1>
+
+    <form id="dadosForm">
+        <input type="text" id="nome" placeholder="Nome" required><br><br>
+        <input type="text" id="sobrenome" placeholder="Sobrenome" required><br><br>
+        <input type="text" id="endereco" placeholder="Endereço" required><br><br>
+        <input type="text" id="cidade" placeholder="Cidade" required><br><br>
+        <input type="text" id="host" placeholder="Host" required><br><br>
+        <button type="submit">Enviar</button>
+    </form>
+
+    <script>
+        document.getElementById('dadosForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
+
+            const data = {
+                nome: document.getElementById('nome').value,
+                sobrenome: document.getElementById('sobrenome').value,
+                endereco: document.getElementById('endereco').value,
+                cidade: document.getElementById('cidade').value,
+                host: document.getElementById('host').value
+            };
+
+            const response = await fetch('/dados', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+
+            const result = await response.json();
+            alert(`Novo registro criado: ${JSON.stringify(result)}`);
+        });
+    </script>
+</body>
+</html>
